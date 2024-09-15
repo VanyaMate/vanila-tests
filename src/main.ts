@@ -1,7 +1,13 @@
-import { User } from './view/entity/user/User.ts';
+import { User } from './view/entity/user/User/User.ts';
+import { UserPresenter } from './view/entity/user/UserMVP/UserPresenter.ts';
 
 
-const app = document.querySelector('#app');
+const app  = document.querySelector('#app');
+const app2 = document.querySelector('#app2')!;
+
+app2.style.display       = 'flex';
+app2.style.flexDirection = 'column';
+app2.style.gap           = '10px';
 
 const render = User({
     login : 'admin',
@@ -9,3 +15,8 @@ const render = User({
 });
 
 render('beforeend', app!);
+
+new UserPresenter('1', 'beforeend', app2);
+new UserPresenter('2', 'beforeend', app2);
+new UserPresenter('3', 'beforeend', app2);
+new UserPresenter('4', 'beforeend', app2);

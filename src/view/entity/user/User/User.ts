@@ -1,11 +1,9 @@
-import { component } from '../../helpers/component.ts';
 import css from './User.module.css';
+import { component } from '../../../helpers/component.ts';
+import { DomainUser } from '../types/User.ts';
 
 
-export type UserProps = {
-    login: string;
-    avatar: string;
-}
+export type UserProps = DomainUser;
 
 export const User = function (props: UserProps) {
     return component(props, `
