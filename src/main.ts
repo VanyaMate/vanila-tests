@@ -1,13 +1,23 @@
 import { User } from './view/entity/user/User/User.ts';
 import { UserPresenter } from './view/entity/user/UserMVP/UserPresenter.ts';
+import {
+    getUserCardLoader,
+} from './view/entity/user/UserFunc/getUserCardLoader.ts';
+import { getUserById } from './view/entity/user/UserFunc/getUserById.ts';
+import { getUserCard } from './view/entity/user/UserFunc/getUserCard.ts';
 
 
-const app  = document.querySelector('#app');
-const app2 = document.querySelector('#app2')!;
+const app: HTMLElement  = document.querySelector('#app')!;
+const app2: HTMLElement = document.querySelector('#app2')!;
+const app3: HTMLElement = document.querySelector('#app3')!;
 
-app2.style.display       = 'flex';
-app2.style.flexDirection = 'column';
-app2.style.gap           = '10px';
+[ app, app2, app3 ].forEach((app: HTMLElement) => {
+    app.style.display       = 'flex';
+    app.style.flexDirection = 'column';
+    app.style.gap           = '10px';
+});
+
+// app 1
 
 const render = User({
     login : 'admin',
@@ -16,7 +26,21 @@ const render = User({
 
 render('beforeend', app!);
 
+
+// app 2
+
 new UserPresenter('1', 'beforeend', app2);
 new UserPresenter('2', 'beforeend', app2);
 new UserPresenter('3', 'beforeend', app2);
 new UserPresenter('4', 'beforeend', app2);
+
+
+// app 3
+
+const loader = getUserCardLoader();
+app3.insertAdjacentElement('beforeend', loader);
+getUserById('1').then((user) => {
+    const card = getUserCard(user, console.log);
+    loader.remove();
+    app3.insertAdjacentElement('beforeend', card);
+});
