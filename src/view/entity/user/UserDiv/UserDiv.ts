@@ -1,4 +1,4 @@
-import { div } from '../../../helpers/entity/e.ts';
+import { button, div, img } from '../../../helpers/entity/e.ts';
 import css from './UserDiv.module.css';
 
 
@@ -6,12 +6,16 @@ import css from './UserDiv.module.css';
 export const UserDiv = (login: string) =>
     div({ class: css.container }, [
         div({ class: css.info }, [
-            div({ class: css.avatar }, []),
+            img({
+                class: css.avatar,
+                src  : 'https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp',
+                alt  : 'avatar',
+            }, []),
             div({ class: css.login, text: login }, []),
         ]),
-        div({
+        button({
             class  : css.button,
+            onClick: () => console.log('Click on: ', login),
             text   : '[...]',
-            onClick: () => console.log('Click on', login),
         }, []),
     ]);
