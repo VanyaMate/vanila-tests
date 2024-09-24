@@ -5,13 +5,15 @@ import {
 } from './view/entity/user/UserFunc/getUserCardLoader.ts';
 import { getUserById } from './view/entity/user/UserFunc/getUserById.ts';
 import { getUserCard } from './view/entity/user/UserFunc/getUserCard.ts';
+import { UserDiv } from './view/entity/user/UserDiv/UserDiv.ts';
 
 
 const app: HTMLElement  = document.querySelector('#app')!;
 const app2: HTMLElement = document.querySelector('#app2')!;
 const app3: HTMLElement = document.querySelector('#app3')!;
+const app4: HTMLElement = document.querySelector('#app4')!;
 
-[ app, app2, app3 ].forEach((app: HTMLElement) => {
+[ app, app2, app3, app4 ].forEach((app: HTMLElement) => {
     app.style.display       = 'flex';
     app.style.flexDirection = 'column';
     app.style.gap           = '10px';
@@ -44,3 +46,8 @@ getUserById('1').then((user) => {
     loader.remove();
     app3.insertAdjacentElement('beforeend', card);
 });
+
+
+// app 4
+
+app4.insertAdjacentElement('beforeend', UserDiv('admin div'));
